@@ -1,4 +1,4 @@
-
+The http_debug library simplifies debugging HTTP requests and responses in Flutter applications. It provides a floating debug button `HttpDebugFloatingButton` that overlays your app's UI, offering real-time access to HTTP traffic. With this tool, you can inspect and analyze requests, headers, payloads, and responses directly within your app, without relying on external tools like Postman or browser developer tools.
 
 <table>
   <tr>
