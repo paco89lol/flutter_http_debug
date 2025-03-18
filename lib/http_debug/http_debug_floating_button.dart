@@ -104,10 +104,10 @@ class _HttpDebugFloatingButtonState
     if (responseCode != null && responseCode >= 200 && responseCode < 300 ) {
       text = '🚀';
     } else if (responseCode != null && responseCode >= 300 && responseCode < 400) {
-      text = '${responseCode}';
+      text = '$responseCode';
       color = Colors.orange;
     } else if (responseCode != null && responseCode >= 400) {
-      text = '${responseCode}';
+      text = '$responseCode';
       color = Colors.red;
     }
     _launchRocket(text, color);

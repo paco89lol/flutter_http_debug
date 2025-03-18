@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../data/0_data.dart';
-import '../data/http_debug_context.dart';
 import 'http_activity_details_screen.dart';
 
 /// https Inspector Widget to display records
@@ -39,11 +38,11 @@ class HttpDebugScreenState extends State<HttpDebugScreen> {
   }
 
   // Function to check if the user is at the bottom of the list
-  bool _isAtBottom() {
-    if (!_scrollController.hasClients) return false;
-    return _scrollController.offset >=
-        _scrollController.position.maxScrollExtent;
-  }
+  // bool _isAtBottom() {
+  //   if (!_scrollController.hasClients) return false;
+  //   return _scrollController.offset >=
+  //       _scrollController.position.maxScrollExtent;
+  // }
 
   // Function to check if the user is at the bottom of the list
   // bool _isAtTop() {
@@ -182,7 +181,7 @@ class HttpDebugScreenState extends State<HttpDebugScreen> {
             context,
             MaterialPageRoute(
               builder:
-                  (_) => HttpActivityDetailsScreenV1(httpRecord: httpRecord),
+                  (_) => HttpActivityDetailsScreen(httpRecord: httpRecord),
             ),
           );
         },

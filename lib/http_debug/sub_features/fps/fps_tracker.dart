@@ -12,8 +12,8 @@ class FPSCounter with ChangeNotifier {
   double _fps = 0; // Calculated FPS
   late Timer _timer; // Timer to control when FPS is calculated
 
-  String _s_fps = '';
-  String get value => _s_fps;
+  String _strFps = '';
+  String get value => _strFps;
 
   FPSCounter._() {
     if (kDebugMode) {
@@ -38,7 +38,7 @@ class FPSCounter with ChangeNotifier {
       // Calculate FPS
       // FPS = frames / seconds
       _fps = _frameCount / (interval.inMilliseconds / 1000.0);
-      _s_fps = _fps.toStringAsFixed(0);
+      _strFps = _fps.toStringAsFixed(0);
       // Reset frame counter for the next interval
       _frameCount = 0;
       notifyListeners();

@@ -1,13 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 import '../data/http_record_entity.dart';
 
-class HttpActivityDetailsScreenV1 extends StatelessWidget {
+class HttpActivityDetailsScreen extends StatelessWidget {
   final HttpRecordEntity httpRecord;
 
-  const HttpActivityDetailsScreenV1({super.key, required this.httpRecord});
+  const HttpActivityDetailsScreen({super.key, required this.httpRecord});
 
   @override
   Widget build(BuildContext context) {
@@ -166,22 +164,6 @@ class HttpActivityDetailsScreenV1 extends StatelessWidget {
           fontSize: 16,
           fontWeight: FontWeight.bold,
         ),
-      ),
-    );
-  }
-
-  // Helper method to build JSON view
-  Widget _buildJsonView(Map<String, dynamic> json) {
-    // Pretty-print the JSON using JsonEncoder
-    final prettyJson = JsonEncoder.withIndent('  ').convert(json);
-
-    return Container(
-      width: double.infinity,
-      color: Colors.grey[900],
-      padding: const EdgeInsets.all(16.0),
-      child: Text(
-        prettyJson,
-        style: TextStyle(color: Colors.white, fontSize: 14),
       ),
     );
   }

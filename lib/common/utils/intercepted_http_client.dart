@@ -64,7 +64,7 @@ class InterceptedHttpClient extends http.BaseClient {
       return MapEntry(k.toLowerCase(),v);
     })['content-type'];
 
-    final isJsonRequestBody = (requestMimeType != null && requestMimeType!.toLowerCase().contains("json"));
+    final isJsonRequestBody = (requestMimeType != null && requestMimeType.toLowerCase().contains("json"));
 
     String? requestBody;
 
@@ -105,7 +105,7 @@ class InterceptedHttpClient extends http.BaseClient {
 
     if (!isImageOrAudio) {
 
-      final isJsonResponseBody = (responseMimeType != null && responseMimeType!.toLowerCase().contains("json"));
+      final isJsonResponseBody = (responseMimeType != null && responseMimeType.toLowerCase().contains("json"));
 
       if (isJsonResponseBody) {
 
