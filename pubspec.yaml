@@ -1,6 +1,6 @@
 name: http_debug
 description: "Http inspector / Debugging tool"
-version: 1.0.0
+version: 1.0.1
 homepage: "https://github.com/paco89lol/flutter_http_debug"
 
 environment:
