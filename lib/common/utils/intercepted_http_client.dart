@@ -4,7 +4,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../../http_debug.dart';
+import '../../http_debug/data/http_record_entity.dart';
+import '../../http_debug/http_debug.dart';
 import 'dio_interceptor.dart';
 
 class InterceptedHttpClient extends http.BaseClient {

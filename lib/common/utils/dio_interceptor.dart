@@ -3,7 +3,9 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 
-import '../../http_debug.dart';
+import '../../http_debug/data/http_record_entity.dart';
+import '../../http_debug/http_debug.dart';
+
 
 class DioInterceptor extends Interceptor {
 

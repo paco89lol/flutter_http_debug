@@ -1,3 +1,3 @@
-## 0.0.1
+## 0.0.1  - 18 March 2025 (Unpublished Version)
 
-* TODO: Describe initial release.
+* Initialize package

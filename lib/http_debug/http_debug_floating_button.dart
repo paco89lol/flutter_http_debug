@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../http_debug.dart';
+import 'http_debug.dart';
 import 'data/0_data.dart';
 import 'screens/0_screens.dart';
 
