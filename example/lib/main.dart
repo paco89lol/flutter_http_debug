@@ -1,12 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:http_debug/http_debug/http_debug.dart';
 import 'package:http_debug/http_debug/http_debug_floating_button.dart';
 
 import 'demo_dio_code.dart';
 
 void main() {
-  HttpsDebug.instance.maxLength = 1000;
   runApp(const MyApp());
 }
 
@@ -16,8 +13,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
-    ValueNotifier<bool> showFloatingButton = ValueNotifier(true);
 
     return MaterialApp(
         routes: {
@@ -33,17 +28,7 @@ class MyApp extends StatelessWidget {
           return Stack(
             children: [
               child!,
-              ValueListenableBuilder<bool>(
-                valueListenable: showFloatingButton,
-                builder: (context, value, child) {
-
-                  if (!value && kReleaseMode) {
-                    return const SizedBox.shrink();
-                  }
-                  // Add the global floating button
-                  return HttpDebugFloatingButtonStyleTwo();
-                },
-              ),
+              HttpDebugFloatingButton(),
             ],
           );
         }

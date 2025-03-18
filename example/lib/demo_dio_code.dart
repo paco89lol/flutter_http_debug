@@ -11,17 +11,15 @@ final dio = createDio();
 Dio createDio() {
   final dio = Dio();
   dio.interceptors.add(
-    DioInterceptor(httpsDebugController: HttpsDebug.instance)
+    DioInterceptor(httpsDebugController: HttpsDebug.instance),
   );
   return dio;
 }
 
 void sendDioHttpRequest() {
-
   int num = Random().nextInt(100);
 
   try {
-
     if (num % 6 == 0) {
       final xmlBody = '''
   <?xml version="1.0" encoding="utf-8"?>
@@ -37,7 +35,7 @@ void sendDioHttpRequest() {
         options: Options(
           headers: {
             'Content-Type': 'application/xml', // Set the content type to XML
-            'Accept': 'application/xml',       // Optional: for XML responses
+            'Accept': 'application/xml', // Optional: for XML responses
           },
         ),
       );
@@ -52,26 +50,18 @@ void sendDioHttpRequest() {
     ''';
 
       dio.post(
-          'https://reqbin.com/echo/post/json',
-          data: jsonBody,
-          options: Options(
-              headers: {
-                'Content-Type': 'application/json'
-              }
-          )
+        'https://reqbin.com/echo/post/json',
+        data: jsonBody,
+        options: Options(headers: {'Content-Type': 'application/json'}),
       );
     } else if (num % 6 == 2) {
       final jsonBody1 = '''
     ''';
 
       dio.get(
-          'https://reqbin.com/echo/get/json/page/2',
-          data: jsonBody1,
-          options: Options(
-              headers: {
-                'Accept': 'application/json'
-              }
-          )
+        'https://reqbin.com/echo/get/json/page/2',
+        data: jsonBody1,
+        options: Options(headers: {'Accept': 'application/json'}),
       );
     } else if (num % 6 == 3) {
       dio.get('https://httpstat.us/304');
@@ -80,17 +70,15 @@ void sendDioHttpRequest() {
     } else {
       dio.get('https://httpstat.us/404');
     }
-  // Make a request
+    // Make a request
 
-
-    dio.get('https://api.ipify.og?format=json&request=1', options: Options(headers: {"abc": "abc"}));
-
-    // dio.get('https://api.ipify.org?format=json&request=2', options: Options(headers: {"dce": "dce"}));
-    // dio.get('https://api.ipify.org?format=json&request=3', options: Options(headers: {"dce": "dce"}));
+    dio.get(
+      'https://api.ipify.og?format=json&request=1',
+      options: Options(headers: {"abc": "abc"}),
+    );
 
     // final requestHeaders = {"_abc": "_abc"};
     // dio.get('https://api.dicebear.com/9.x/adventurer/svg?seed=Aiden', options: Options(headers: {"abc": requestHeaders}));
-
   } catch (e) {
     print('Error: $e');
   }
@@ -121,7 +109,7 @@ void sendHttpRequest() async {
         Uri.parse('https://reqbin.com/echo/post/xml'), // Replace with your URL
         headers: {
           'Content-Type': 'application/xml', // Set the content type to XML
-          'Accept': 'application/xml',       // Optional: for XML responses
+          'Accept': 'application/xml', // Optional: for XML responses
         },
         body: xmlBody,
       );
@@ -140,9 +128,7 @@ void sendHttpRequest() async {
 
       final response = await client.post(
         Uri.parse('https://reqbin.com/echo/post/json'),
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: {'Content-Type': 'application/json'},
         body: jsonBody,
       );
 
@@ -151,38 +137,30 @@ void sendHttpRequest() async {
       // GET Request with JSON Accept Header
       final response = await client.get(
         Uri.parse('https://reqbin.com/echo/get/json/page/2'),
-        headers: {
-          'Accept': 'application/json',
-        },
+        headers: {'Accept': 'application/json'},
       );
 
       print('Response (${response.statusCode}): ${response.body}');
     } else if (num % 6 == 3) {
       // GET Request with 304 Response
-      final response = await client.get(
-        Uri.parse('https://httpstat.us/304'),
-      );
+      final response = await client.get(Uri.parse('https://httpstat.us/304'));
 
       print('Response (${response.statusCode}): ${response.body}');
     } else if (num % 6 == 4) {
       // GET Request with 401 Response
-      final response = await client.get(
-        Uri.parse('https://httpstat.us/401'),
-      );
+      final response = await client.get(Uri.parse('https://httpstat.us/401'));
 
       print('Response (${response.statusCode}): ${response.body}');
     } else {
       // GET Request with 404 Response
-      final response = await client.get(
-        Uri.parse('https://httpstat.us/404'),
-      );
+      final response = await client.get(Uri.parse('https://httpstat.us/404'));
 
       print('Response (${response.statusCode}): ${response.body}');
     }
 
     // Additional GET Request
     final response = await client.get(
-      Uri.parse('https://api.ipify.org?format=json&request=1'),
+      Uri.parse('https://api.ipify.org?format=json'),
       headers: {"abc": "abc"},
     );
 

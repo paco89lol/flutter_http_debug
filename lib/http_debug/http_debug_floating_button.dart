@@ -7,19 +7,19 @@ import 'data/0_data.dart';
 import 'screens/0_screens.dart';
 
 /// Global Floating Button Widget with https Inspector overlay
-class HttpDebugFloatingButtonStyleTwo extends StatefulWidget {
+class HttpDebugFloatingButton extends StatefulWidget {
   final HttpDebugContext httpDebugContext =
       HttpsDebug.instance.httpsDebugContext;
 
-  HttpDebugFloatingButtonStyleTwo({super.key});
+  HttpDebugFloatingButton({super.key});
 
   @override
-  State<HttpDebugFloatingButtonStyleTwo> createState() =>
-      _HttpDebugFloatingButtonStyleTwoState();
+  State<HttpDebugFloatingButton> createState() =>
+      _HttpDebugFloatingButtonState();
 }
 
-class _HttpDebugFloatingButtonStyleTwoState
-    extends State<HttpDebugFloatingButtonStyleTwo>
+class _HttpDebugFloatingButtonState
+    extends State<HttpDebugFloatingButton>
     with SingleTickerProviderStateMixin {
   bool _isInspectorVisible = false;
 

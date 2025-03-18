@@ -1,39 +1,86 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+# Get Started
+add dependency
+```yaml
+dependencies:
+  http_debug: ^0.0.1
 ```
 
-## Additional information
+# Initialize
+In the `MaterialApp` widget, use the `builder` parameter to wrap your app's widget tree with the `HttpDebugFloatingButton`, ensuring it is accessible globally throughout your app.
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+
+    return MaterialApp(
+        routes: {
+          '/': (context) => HomePage(), // Default route
+          '/sendRequest': (context) => SendRequestDetailPage(),
+        },
+        initialRoute: '/', // Set the initial route
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        ),
+        debugShowCheckedModeBanner: false,
+        builder: (context, child) {
+          return Stack(
+            children: [
+              child!,
+              HttpDebugFloatingButton(),
+            ],
+          );
+        }
+    );
+  }
+}
+```
+
+
+# Dio Users
+1. Add interceptor class `DioInterceptor` for dio client.
+```dart
+
+Dio get dioClient{
+  final client = Dio()..interceptors.add(
+    DioInterceptor(),
+  );
+  return client;
+}
+
+/// Use dio regularly
+dio.get(
+  'https://api.ipify.og?format=json',
+  options: Options(headers: {"abc": "abc"}),
+);
+
+```
+
+# Http Users
+1. Initialize `Client` to client class, then use `httpClient` on the `InterceptedHttpClient` constructor
+```dart
+HttpInterceptor get httpClient {
+  InterceptedHttpClient(
+    httpsDebugController: HttpsDebug.instance,
+    httpClient: http.Client(),
+  );
+}
+
+/// Use http client regularly
+await client.get(
+  Uri.parse('https://api.ipify.org?format=json'),
+  headers: {"abc": "abc"},
+);
+```
+
+# Acessing the UI
+
