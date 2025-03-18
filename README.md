@@ -43,7 +43,7 @@ https://github.com/user-attachments/assets/64818d4f-31c6-4b19-902e-7c95dce4127c
 add dependency
 ```yaml
 dependencies:
-  http_debug: ^0.0.1
+  http_debug: ^1.0.0
 ```
 
 # Initialize
