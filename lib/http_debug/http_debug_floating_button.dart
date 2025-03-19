@@ -98,6 +98,11 @@ class _HttpDebugFloatingButtonState
   }
 
   void __launchRocket() {
+
+    if (widget.httpDebugContext.circularBufferNotifier.buffer.length == 0) {
+      return;
+    }
+
     final responseCode = widget.httpDebugContext.circularBufferNotifier.buffer.last?.responseCode;
     var text = "";
     var color = Colors.white;
