@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../data/http_record_entity.dart';
 
@@ -9,12 +10,30 @@ class HttpActivityDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         foregroundColor: Colors.white,
         title: Text("Details", style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: Colors.black,
+        actions: [
+          IconButton(
+            padding: EdgeInsets.zero,
+            constraints: BoxConstraints(),
+            icon: const Icon(Icons.copy),
+            color: Colors.green,
+            onPressed: () {
+              // Copy text to clipboard
+              Clipboard.setData(ClipboardData(text: httpRecord.toClipboardString()));
+              // Show confirmation
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("Copied to clipboard.")),
+              );
+            },
+            tooltip: 'scroll to bottom',
+          ),
+        ],
       ),
       body: Container(
         color: Colors.black,
